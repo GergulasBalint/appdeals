@@ -1,7 +1,7 @@
 export const fetchProducts = async (type, params = {}) => {
   const queryString = new URLSearchParams(params).toString();
   try {
-    const response = await fetch(`/.netlify/functions/products/${type}?${queryString}`);
+    const response = await fetch(`/api/products/${type}?${queryString}`);
     return await response.json();
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -11,7 +11,7 @@ export const fetchProducts = async (type, params = {}) => {
 
 export const fetchCategories = async () => {
   try {
-    const response = await fetch('/.netlify/functions/categories');
+    const response = await fetch('/api/categories');
     return await response.json();
   } catch (error) {
     console.error('Error fetching categories:', error);
