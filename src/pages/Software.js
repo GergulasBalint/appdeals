@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import ProductCard from '../components/ProductCard';
-import { fetchSoftwareProducts } from '../services/api';
+import { fetchSoftwareProducts, fetchCategories } from '../services/api';
 
 const Software = () => {
   const [products, setProducts] = useState([]);
