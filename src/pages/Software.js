@@ -11,6 +11,7 @@ const Software = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
   const [sortOrder, setSortOrder] = useState('');
   const productsPerPage = 12;
 
