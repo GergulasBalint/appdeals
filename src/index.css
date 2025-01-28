@@ -1,0 +1,155 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  background: linear-gradient(135deg, #EEF2FF 0%, #FAE8FF 50%, #FCE7F3 100%);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.moving-bg {
+  background: linear-gradient(
+    -45deg,
+    #4F46E5,
+    #7C3AED,
+    #EC4899,
+    #C084FC,
+    #818CF8,
+    #F472B6
+  );
+  background-size: 400% 400%;
+  animation: moveGradient 30s ease infinite;
+}
+
+.blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: linear-gradient(-45deg, #4F46E5, #EC4899);
+  filter: blur(2px);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79, 70, 229, 0.2) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(79, 70, 229, 0.2);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(79, 70, 229, 0.4);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+
+.custom-select {
+  max-height: 200px;
+  scrollbar-width: thin;
+  scrollbar-color: #4F46E5 #EEF2FF;
+}
+
+.custom-select::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-select::-webkit-scrollbar-track {
+  background: #EEF2FF;
+  border-radius: 4px;
+}
+
+.custom-select::-webkit-scrollbar-thumb {
+  background-color: #4F46E5;
+  border-radius: 4px;
+  border: 2px solid #EEF2FF;
+}
+
+/* Style for range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #EEF2FF;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4F46E5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4F46E5;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Sidebar categories scroll */
+.categories-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4F46E5 #EEF2FF;
+}
+
+.categories-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.categories-scroll::-webkit-scrollbar-track {
+  background: #EEF2FF;
+  border-radius: 4px;
+}
+
+.categories-scroll::-webkit-scrollbar-thumb {
+  background-color: #4F46E5;
+  border-radius: 4px;
+}
