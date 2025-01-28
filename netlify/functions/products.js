@@ -8,9 +8,27 @@ exports.handler = async (event, context) => {
   try {
     const pool = await createPool();
     const params = event.queryStringParameters || {};
-    const pathParams = event.path.split('/');
-    const type = pathParams[pathParams.length - 1];
+    const pathSegments = event.path.split('/');
+    const type = pathSegments[pathSegments.length - 2]; // 'software' or 'courses'
+    const id = pathSegments[pathSegments.length - 1];
 
+    // If ID is provided, fetch single product
+    if (id && id !== 'software' && id !== 'courses') {
+      const [product] = await pool.query(
+        'SELECT * FROM appsumo_products WHERE absolute_href LIKE ?',
+        [`%${id}%`]
+      );
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(product[0])
+      };
+    }
+
+    // Otherwise, fetch product list
     const limit = parseInt(params.limit) || 12;
     const offset = parseInt(params.offset) || 0;
     const searchTerm = params.search || '';
@@ -34,12 +52,13 @@ exports.handler = async (event, context) => {
       queryParams.push(category);
     }
 
+    // Add sorting
     switch (sortOrder) {
       case 'price_asc':
-        query += ` ORDER BY CAST(REPLACE(REPLACE(REPLACE(font_medium, '$', ''), ',', ''), ' ', '') AS UNSIGNED) ASC`;
+        query += ` ORDER BY CAST(REPLACE(REPLACE(font_medium, '$', ''), ',', '') AS DECIMAL(10,2)) ASC`;
         break;
       case 'price_desc':
-        query += ` ORDER BY CAST(REPLACE(REPLACE(REPLACE(font_medium, '$', ''), ',', ''), ' ', '') AS UNSIGNED) DESC`;
+        query += ` ORDER BY CAST(REPLACE(REPLACE(font_medium, '$', ''), ',', '') AS DECIMAL(10,2)) DESC`;
         break;
       case 'name_asc':
         query += ` ORDER BY sr_only ASC`;
