@@ -11,7 +11,6 @@ const Software = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
   const [sortOrder, setSortOrder] = useState('');
   const productsPerPage = 12;
 
@@ -56,7 +55,7 @@ const Software = () => {
     }, 300);
 
     return () => clearTimeout(debounceTimer);
-  }, [currentPage, searchTerm, selectedCategory, sortOrder, maxPrice]);
+  }, [currentPage, searchTerm, selectedCategory, sortOrder]);
 
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
@@ -104,7 +103,7 @@ const Software = () => {
 
   const handlePriceChange = (e) => {
     setMaxPrice(parseInt(e.target.value));
-    setCurrentPage(1); // Reset to first page when price changes
+    setCurrentPage(1);
   };
 
   return (

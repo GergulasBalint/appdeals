@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiSearch, FiFilter } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 import ProductCard from '../components/ProductCard';
 import { fetchCourseProducts } from '../services/api';
 

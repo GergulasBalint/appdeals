@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiCheck, FiShield } from 'react-icons/fi';
 
 const Header = () => {
   const location = useLocation();
