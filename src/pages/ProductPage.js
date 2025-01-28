@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchProductById, fetchProducts } from '../services/api';
+import { fetchProductById, fetchSoftwareProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
 
 const ProductPage = () => {
@@ -17,7 +17,7 @@ const ProductPage = () => {
         setProduct(data);
         
         // Fetch more products for random recommendations
-        const recsData = await fetchProducts(12, 0, '', '');
+        const recsData = await fetchSoftwareProducts(12, 0, '', '');
         const filteredRecs = recsData.products.filter(p => p.absolute_href !== data.absolute_href);
         const randomRecs = filteredRecs.sort(() => 0.5 - Math.random()).slice(0, 3);
         setRecommendations(randomRecs);
